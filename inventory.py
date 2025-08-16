@@ -22,3 +22,15 @@ class invent :
             218: ["beef", "meat", 70, 5],
             219: ["fish", "meat", 40, 9],
         }
+
+    def check_stock (self,items_id) :
+
+        for i in items_id :
+            if self.products[i][3] == 0 :
+                return True
+
+    def check_low_stock (self,items_id) :
+
+        for i in items_id :
+            if self.products[i][3] < self.products[i][3]//2 :
+                return True
