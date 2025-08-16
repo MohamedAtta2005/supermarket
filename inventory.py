@@ -32,5 +32,6 @@ class invent :
     def check_low_stock (self,items_id) :
 
         for i in items_id :
-            if self.products[i][3] < self.products[i][3]//2 :
+            if self.products[i][3] <= 3 :
                 return True
+
