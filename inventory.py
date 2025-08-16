@@ -1,5 +1,7 @@
-class invent :
-    def __init__(self):
+class invent:
+ order = {}
+
+ def __init__(self):
         self.products = {
             200: ["apple", "fruits", 10, 8],
             201: ["banana", "fruits", 5, 15],
@@ -21,17 +23,55 @@ class invent :
             217: ["chicken", "meat", 50, 7],
             218: ["beef", "meat", 70, 5],
             219: ["fish", "meat", 40, 9],
-        }
-
-    def check_stock (self,items_id) :
-
-        for i in items_id :
-            if self.products[i][3] == 0 :
+        } 
+            
+ def check_stock(self, items_id) :
+       
+            if self.products[items_id][3] == 0 :
                 return True
 
-    def check_low_stock (self,items_id) :
-
-        for i in items_id :
-            if self.products[i][3] <= 3 :
+ def check_stock_count (self,item_id, count) :
+       
+            if self.products[item_id][3] < count :
                 return True
+ def buy(self):
+      lid = []
+      lcount =[]
+      while True:
+          
+          id = int(input("enter product id: \n"))
+          count= int(input("enter product count: \n"))
+          if(id >=200 and id <=219):
+              pass
+          else:
+              print("id is not exist!")
+              continue
+                    
+          if(self.check_stock(id)):
+              print("product is not exist")
+              continue
+          elif(self.check_stock_count(id , count)):
+              print("this quantity is not available")
+              continue
+          else:
+              lid.append(id)
+              lcount.append(count)
+              self.products[id][3] -= count
+              print(f"product count is :{self.products[id][3]}")
+              
+          x = input("continue or not \n")
+          if(x == "yes"):
+              continue
+          else:
+              print(f"{lid} and {lcount} is purchased")
+              break   
+              
+ def show_items(self):
+     for i in self.products.keys():    
+      print("product_id",i,":" ,"product_name :" ,self.products[i][0]) 
+ def check_low_stock (self,items_id) :
 
+       
+             if self.products[items_id][3] <= 3 :
+                return True
+        
